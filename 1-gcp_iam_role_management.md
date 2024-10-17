@@ -6,7 +6,7 @@
 1. **Who is nothing but users (members, identity, principle)**
 2. **There are two type of accounts in here People Account & Service Account**
 3. **People Accounts: Personal accounts, Cloud Identity Account, Workspace Account and Groups. For Setting up cloud identity account after creating a domain follow this: https://cloud.google.com/identity/docs/set-up-cloud-identity-admin**
-4. **Service Accounts:These are used for backed operations. IF two services needs to interact we use svc account**
+4. **Service Accounts:These are used for backed operations. If two services needs to interact we use svc account Service accounts are present in project scope. 2 Types of Service account. One is User Managed Account, these accounts are created by users(format zainsvc@ProjectID.iam.gserviceaccounts.com) and google(projectNumber-resource@developer.gserviceaccounts.com) but users will manage it. The second one is Google managed created by google(serviceaccount-ProjectNumber@closedservices.gserviceaccounts.com which are invisible to users**
 
 ## IAM Roles: Collection of Permissions
 1. **Primitive Roles: These are very broad rule usually owner, editor and viewer.This roles are at project level**
