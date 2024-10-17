@@ -1,3 +1,19 @@
+# GCP IAM
+### IAM: Lets admin authorize who can take action on specific resources. This essentially consists of
+*** Who: Members ; can do what: create, delete; on which Resource: vm, DB,Clusters
+
+## IAM
+1. **Who is nothing but users (members, identity, principle)**
+2. **There are two type of accounts in here People Account & Service Account**
+3. **People Accounts: Personal accounts, Cloud Identity Account, Workspace Account and Groups. For Setting up cloud identity account after creating a domain follow this: https://cloud.google.com/identity/docs/set-up-cloud-identity-admin**
+4. **Service Accounts:These are used for backed operations. IF two services needs to interact we use svc account**
+
+## IAM Roles: Collection of Permissions
+1. **Primitive Roles: These are very broad rule usually owner, editor and viewer.This roles are at project level**
+2. **Predefined Roles: These are multiple roles that are already created for specific gcp services**
+3. **Custom Roles: We create these roles and are customized based on our needs**
+
+
 
 # GCP IAM Role Management with gcloud Commands
 
