@@ -1,4 +1,3 @@
-
 # VPC Peering: 
 In Org we will have multiple VPC's & we will need instances in different VPC to communicate & establish communication.
 
