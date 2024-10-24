@@ -1,0 +1,65 @@
+# firewall
+Firewall helps control network traffic to and from instances (virtual machines, containers, etc.) based on specified rules.
+skip Default N/W Creation: Goto Org >IAM > Organization Policies(user having Org Policy admin) default network will not be created.
+
+*Ingress: Uber Eats coming to my gated community, I need to tell Security Uber is coming to my house, Security allows him inside. This is Ingress*
+*Egress: I dont need to tell security when uber eats going out. During Covid when we need to go out we need to tell Security that I am Doctor and I am going out*
+*If I give Ingress Rule, I dont need to tell Egress rule.
+
+# Network Tags
+Firewall implemented at VPC level, if we need to implement for a particular Instance we use network-tags
+
+# Usecase
+I need to create 1 VPC and 2 Subnets: Subnet-a (10.2.1.0/24) & Subnet-b (10.2.2.0/24).
+Create 3 VM Instance-1a,Instance-1b & Instance-1c in Subnet-a; and now create Instance-2 and Instance-3 in Subnet-b
+
+Requirement: Instance-1a and Intance-1b can ping instance 2 but Intance-1c cannot ping instance 2.
+Instance-1a,1b,1c cannot ping Instance 3
+
+Script for Infra:
+---
+*Create a custom-vpc*
+gcloud compute networks create custom-network --subnet-mode=custom
+echo "Network Created Succefsully........"
+
+# Create Subnet-a in custom-vpc
+# N/w name, cidr range, region
+gcloud compute networks subnets create subnet-a --network custom-network --region us-central1 --range 10.2.1.0/24
+echo "Subnet-a Created Succesfully......."
+
+# Create subnet-b in custom-vpc
+gcloud compute networks subnets create subnet-b --network custom-network --region us-central1 --range 10.2.2.0/24
+echo "Subnet-b Created Succesfully......."
+
+# Create instance-1a in subnet-a
+gcloud compute instances create instance-1a --zone us-central1-a --subnet=subnet-a --machine-type=e2-small
+
+# Create instance-1b in subnet-a
+gcloud compute instances create instance-1b --zone us-central1-a --subnet=subnet-a --machine-type=e2-small --no-address
+
+# Create instance-1c in subnet-a
+gcloud compute instances create instance-1c --zone us-central1-a --subnet=subnet-a --machine-type=e2-small --tags=deny-ping
+
+# Create instance-2 in subnet-b
+gcloud compute instances create instance-2 --zone us-central1-a --subnet=subnet-b --machine-type=e2-small --tags=allow-ping
+
+# Create instance-3 in subnet-b
+gcloud compute instances create instance-3 --zone us-central1-a --subnet=subnet-b --machine-type=e2-small --no-address
+
+---
+Solution:
+
+1) echo "Creating a firewall for SSH"
+gcloud compute firewall-rules create allow-ssh-custom-nw --direction=INGRESS --priority=1000 --network=custom-network --action=ALLOW --rules=tcp:22 --source-ranges=0.0.0.0/0
+
+2)echo "Creating a firewall to ping using internal subnets"
+This will make sure that VM in Subnet-a can ping Instance-2. 
+gcloud compute  firewall-rules create allow-icmp-custom-internal --direction=INGRESS --priority=1000 --network=custom-network --action=ALLOW --rules=icmp --source-ranges=10.2.1.0/24
+
+3) echo "Instance 2 cannot communicate to instance-1a so add subnet-b cidr range as well for icmp"
+gcloud compute  firewall-rules create allow-icmp-custom-internal --direction=INGRESS --priority=1000 --network=custom-network --action=ALLOW --rules=icmp --source-ranges=10.2.2.0/24
+
+3) Here instance 1-c is communicating to instance2 and we need to prevent this. So add n.w tag for Instance 1c: deny ping and instance 2: allow-ping
+ echo "Create firewall to deny instance1c to ping instance 2"
+gcloud compute  firewall-rules create deny-instance-1c --direction=INGRESS --priority=1000 --network=custom-network --action=DENY --rules=icmp --source-tags=deny-ping --target-tags=allow-ping
+
