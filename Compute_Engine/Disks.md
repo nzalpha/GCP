@@ -1,6 +1,7 @@
 ---
 
 # **Disks**
+Link : https://cloud.google.com/compute/docs/disks
 Each Compute Engine VM has a single boot disk that contains the operating system. If we need to store any other application related data like logs we will be using Data disk.
 
 The following are the storage options:
@@ -9,7 +10,9 @@ i) Block Storage || ii) Blob/Object Storage. || iii) File Storage
 Block Storage consists of Persistent Disck and Local SSD.
 
 ### **Persistent Disk** : These are not directly attached to the VM, these are attached to Network
-Persistent Disk volumes are located independently from your VM, so you can detach or move Persistent Disk volumes to keep your data even after you delete your VMs. PD can be used as boot disk or data disks. There are 2 types of PD.
+Persistent Disk volumes are located independently from your VM, so you can detach or move Persistent Disk volumes to keep your data even after you delete your VMs. PD can be used as boot disk or data disks.Persistent Disk volumes are durable network storage devices that your virtual machine (VM) instances can access like physical disks in a desktop or a server
+
+There are 2 types of PD.
 
 i)  Zonal PD: Data stored is available in single zone only.When we are trying to attach a zonal disk to a vm, the vm should be in same zone.
 ii) Regional PD: Data is replicated accross multiple zones. Regional PD let you implement high availability (HA) services in Compute Engine.
