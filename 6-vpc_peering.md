@@ -158,6 +158,12 @@ Now if zain logins & createa VM in dev-project it fails becoz there is no networ
 
 6) <img width="1395" alt="image" src="https://github.com/user-attachments/assets/80200b0f-577d-485e-8eca-bd63369f614f">
 
+7) Now when zain logins in the dev-project and tries to create vm, under network > network interfaces, you need to select the 
+Networks shared with me (from host project: "host-project-439520")
+
+<img width="931" alt="image" src="https://github.com/user-attachments/assets/5978817f-2a7e-4407-8385-2760671d11db">
+
+
 
 
 
