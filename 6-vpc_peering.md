@@ -150,7 +150,7 @@ echo "********* Prod Subnet Created Succesfully ********"
 In Dev-Project we need to create a vm. For Zain we gave compute instance admin and service account user.
 Now if zain logins & createa VM in dev-project it fails becoz there is no network and zain does not have persmission to create VPC and hence we need shared vPC.
 
-1) As the admin goto host-project> VPC> Shared VPC > Set up Shared VPC> Enable host project(make sure compute shared vpc admon  at org level is added to user accessing host project)
+1) As the admin goto host-project> VPC> Shared VPC > Set up Shared VPC> Enable host project(make sure compute shared vpc admon  at org level is added to user accessing host project![Image Alt](https://github.com/nzalpha/GCP/blob/1a44fdcd3015fde0f95cca7ff20ed4503ede434a/image.png).
 2) Attach service projects & select Principals, uncheck the owner and editor and other roles here.
 3) Grant Access: Choose accessmode as the dev and prod subnets and save
 4)Now in the tab "Attached Projects"> add svc projects dev and prod.
