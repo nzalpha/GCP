@@ -92,6 +92,16 @@ gcloud compute instances create instance-3 --zone=us-central1-a --machine-type=f
 echo Setup complete, proceed to establish a VPC peering
 
 
+## *VPC Peering*
+
+1) Goto VPC Network & choose VPC network peering and create connection.
+2) Set up peering for nw1 to nw2 by giving project id and network name. 
+
+The status will be inactive and will turn to active when we do peering from nw2 to nw1
+
+
+
+
 ---
 
 
