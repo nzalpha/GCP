@@ -154,7 +154,10 @@ Now if zain logins & createa VM in dev-project it fails becoz there is no networ
 2) Attach service projects & select Principals, uncheck the owner and editor and other roles here.
 3) Grant Access: Choose accessmode as the dev and prod subnets and save
 4)Now in the tab "Attached Projects"> add svc projects dev and prod.
-5) In Indidividual Subnet Access, you see that the subnets are not assigned to any users. Click on 0 users and add the users and give Compute Network user role.
+5) In Indidividual Subnet Access(make sure you enable "Only show subnets that have individual IAM policies"), you see that the subnets are not assigned to any users. Click on 0 users and add the users and give Compute Network user role.
+
+6) <img width="1395" alt="image" src="https://github.com/user-attachments/assets/80200b0f-577d-485e-8eca-bd63369f614f">
+
 
 
 
