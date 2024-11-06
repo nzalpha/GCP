@@ -1,3 +1,63 @@
+# VPC
+
+In On-Prem, routers, switches, Firewall and load balancers and other network appliances are physically present in Data Centers. 
+
+In Cloud, the above are provided through Software Defined Network
+
+VPC is Global or Regional Scoped
+Subnet is Regional Scope
+Vm is Zonal Scope.
+
+*When creating VPC you need to create a Subnet. There are two different types of Subnets.*
+i) Automode: Google will create subnet in each region. There are 40 regions and so there will 40 subnets created.If you want to create network quickly you can use this.
+Con: Every Company will get the same CIDR range for every subnet that is create.
+Flipkart                        Myntra
+VPC (automode)                  VPC (automode)
+  Subnet1 Region1(10.1.0.0/20).  Subnet1 Region1(10.1.0.0/20)
+
+When Flipkart creates a vm in subnet1, it might get assigned ip as 10.1.1.4
+Myntra creates a vm in subnet 1, it might get assigned same ip as above.
+When both these company got acquired and want the vm to communicate the vm will not communicate as the private ip adrs are same.
+
+```bash
+gcloud compute networks create my-auto-vpc \
+    --subnet-mode=auto
+```
+
+ii) Custom Mode: You will create subnet in a particular regions.
+```bash
+gcloud compute networks create my-custom-vpc \
+    --subnet-mode=custom
+```
+
+
+### 3. Create a Subnet in Custom Mode VPC
+
+Specify the region and IP range for each subnet.
+
+```bash
+gcloud compute networks subnets create my-custom-subnet \
+    --network=my-custom-vpc \
+    --region=us-central1 \
+    --range=10.0.0.0/24
+```
+
+## 4. Create Virtual Machines (VMs) in a Specific VPC and Subnet
+
+Specify the VPC network and subnet when creating the VM instance. You can also set a specific zone for the VM.
+
+```bash
+gcloud compute instances create my-vm-auto \
+    --zone=us-central1-a \
+    --network=my-auto-vpc
+
+gcloud compute instances create my-vm-custom \
+    --zone=us-central1-a \
+    --network=my-custom-vpc \
+    --subnet=my-custom-subnet
+```
+
+
 # firewall
 Firewall helps control network traffic to and from instances (virtual machines, containers, etc.) based on specified rules.
 skip Default N/W Creation: Goto Org >IAM > Organization Policies(user having Org Policy admin) default network will not be created.
