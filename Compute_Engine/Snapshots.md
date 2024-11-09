@@ -19,5 +19,4 @@ If S2 is deleted, S3 will get snapshot of S2 as well.
 We create Snapshot1 of disk → us-central1; the snapshot size is 1.5 gb
 After couple of days the disk will be increasing to 2 gb
 Now we create Snapshot2 of same disk-> us-central1 the snapshot size will be .5 gb
-    
-    
+Lets assume we are creating snapshot3 of same disk in asia-southeast in different region, the snapshot size will be 3.5 gb
