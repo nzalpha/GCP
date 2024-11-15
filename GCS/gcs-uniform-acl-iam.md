@@ -19,6 +19,8 @@
    - Authorize & authenticate the svc account in vm
    gcloud auth activate-service-account instancestorage@host-project-439520.iam.gserviceaccount.com --key-file key.json
 
+   - Copy file from vm to bucket:
+  gsutil cp log.txt gs://host-project-439520-bucket1
 ---
 Versioning:
 
@@ -91,4 +93,8 @@ gsutil ls gs://i27example-iam
 gcloud storage buckets get-iam-policy gs://i27example-iam
 Gives list of members and roles
 **Add IAM policy binding to make the bucket public**
-gcloud storage bucket add-iam-policy-binding gs://i27example-iam --role roles/storage.objectViewer --member allUsers
+gcloud storage buckets add-iam-policy-binding gs://i27example-iam --role roles/storage.objectViewer --member 
+
+**Create a lifecycle Rule through json file**
+gcloud storage buckets update gs://host-project-439520-bucket1 --lifecycle-fi
+le=life.json
