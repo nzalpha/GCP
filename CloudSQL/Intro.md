@@ -49,6 +49,28 @@ Read replicas are read-only; you cannot write to them. The read replica processe
 During Disaster recover, if HA all regions are failed along with primary and becase read replica can be in diff region we can promote read replica to primary
 
 
+## Connecting to Cloud SQL
+
+You can connect to cloud sql through public ip private IP and also through Cloud SQL Auth Proxy.
+
+Cloud SQL Auth Proxy:
+The Cloud SQL Auth Proxy is a utility for ensuring secure connections to your Cloud SQL instances. It provides IAM authorization, allowing you to control who can connect to your instance through IAM permissions, and TLS 1.3 encryption, without having to manage certificates.
+
+We use this when application should not go outside, when it should be in same network and same infra
+
+## How Cloud SQL Auth Proxy works:
+This works similar to having a client application and cloud sql in same machine which is you can connect using localhost.
+
+1.Create a vm which acts as client machine. In the client machine you install proxy client and the proxy client will be in running state.
+2.The client machine should have mysql client installed
+3.Download Cloud SQL Auth PRoxy using "curl -o cloud-sql-proxy https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.14.0/cloud-sql-proxy.linux.amd64" from doc: https://cloud.google.com/sql/docs/mysql/connect-auth-proxy
+4.chmod +x cloud-sql-proxy
+5. Now authenticate the cloud sql auth proxy .We need to execute the cloud proxy and provide the credential file. Use a service account to create and download the associated JSON file, and set the --credentials-file flag to the path of the file when you start the Cloud SQL Auth Proxy. The service account must have the required permissions for the Cloud SQL instance.
+./cloud-sql-proxy --credentials-file PATH_TO_KEY_FILE \
+INSTANCE_CONNECTION_NAME
+6.now conntect to the database in client machine as  mysql -u USERNAME -p --host 127.0.0.1
+
+
 
 
 
