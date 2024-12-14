@@ -17,6 +17,12 @@ iii)Disaster Recovery: IF Primary and HA is down then DR comes into play.
 Instance IP assignments:
 1. Public IP: Assigns an external, internet accessible IP address. Requires using an authorized network or the Cloud SQL Proxy to connect to this instance.Not everyone can connect.We will have NAT IP's we will enter these NATIp in authorized network so that they can connect to the db. If you dont add these range, you wont be able to connect to mysql workbench.
 
+In simple language the above can be understood as below
+When a Cloud SQL instance has a public IP, it means the database can be accessed over the internet. However, for security reasons, not everyone can connect to it.
+To control access, you need to define Authorized Networks — a list of IP addresses that are allowed to connect. In this case, you would add the NAT IPs (the public IPs of your network) to this list. If you don’t add these NAT IPs, you won’t be able to connect to the Cloud SQL instance using tools like MySQL Workbench.
+Alternatively, you can use the Cloud SQL Proxy as a more secure option to avoid exposing the database to the internet.
+
+
 2. Private IP: Assigns an internal, Google hosted VPC IP address.
 To use private IP we need Private services access connection. So create PSA.
 
