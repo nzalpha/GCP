@@ -94,11 +94,14 @@ gcloud storage bucket create gs://i27example-iam
 **Copy some files to this bucket**
 gcloud cp log1.txt gs://i27example-iam
 gcloud cp log2.txt gs://i27example-iam
+
 **List the objects in bucket**
 gsutil ls gs://i27example-iam
+
 **Get IAM policy binding for Bucket**
 gcloud storage buckets get-iam-policy gs://i27example-iam
 Gives list of members and roles
+
 **Add IAM policy binding to make the bucket public**
 gcloud storage buckets add-iam-policy-binding gs://i27example-iam --role roles/storage.objectViewer --member 
 
