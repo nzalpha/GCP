@@ -12,8 +12,11 @@ Buckets are the basic containers that hold your data. Everything that you store 
     - Usually used to store DB backups, application files
 
 Structured data (key values) No then  GCS
+
 If structured data & relational & if scalability option is needed then Spanner
+
 If structured data & relational & if scalability option is not needed then Cloud SQL
+
 If structured data & not relational then No SQL and svc is called Cloud Firestore
 
 ## **Storage Class**
