@@ -63,17 +63,22 @@ Fine Grained: Specify access to individual objects by using object-level permiss
 
 **Gcloud Command for bucket creation**
 gcloud storage bucket create gs://i27example
+
 **Describe bucket**
 gcloud storage bucket describe gs://i27example
+
 **Provide Public Read access**
 gcloud storage bucket update gs://i27example --predefined-default-object-acl=publicRead
 
 ## Making Specific Object Public through ACL
+
 **Gcloud Command for bucket creation**
 gcloud storage bucket create gs://i27example-object
+
 **Copy some files to this bucket**
 gcloud cp log1.txt gs://i27example-object
 gcloud cp log2.txt gs://i27example-object
+
 **Provide Public Read access to log1.txt only**
 gcloud storage object update gs://i27example-object/log1.txt --predefined-acl=publicRead
 
@@ -82,8 +87,10 @@ gsutil rm -r gs://i27example-object (recursively remove everything in object)
 for objects: gsutil rm gs://i27example-object/log1.txt
 
 ## Making Specific Object Public through ACL
+
 **Gcloud Command for bucket creation**
 gcloud storage bucket create gs://i27example-iam
+
 **Copy some files to this bucket**
 gcloud cp log1.txt gs://i27example-iam
 gcloud cp log2.txt gs://i27example-iam
