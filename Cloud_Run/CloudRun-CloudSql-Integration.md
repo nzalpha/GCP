@@ -65,7 +65,8 @@ gcloud run deploy run-sql --image us-central1-docker.pkg.dev/host-project-439520
   --set-env-vars DB_USER="cloud-user" \
   --set-env-vars DB_PASS="Gcp@2022"
 
-  Once service is deployed goto network and add the connector we created in Step 5
+**Step 7:
+  Once service is deployed in the Cloud Run UI goto> network> Connect to VPC for outbound traffic > Use Serverless VPC Access Connector and add the connector we created in Step 5
 
   Now when we access the url we see the application.
 
