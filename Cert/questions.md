@@ -213,3 +213,53 @@ Here's why:
 SSL Proxy Load Balancer is specifically designed for SSL-encrypted traffic (like HTTPS or SSL/TCP) and provides SSL termination at the load balancer. This means the SSL traffic is decrypted at the load balancer, and the traffic sent to backend instances is unencrypted (which reduces the load on your backend servers).
 
 Minimizing Latency: The SSL Proxy Load Balancer operates at the network edge (Google's global points of presence), meaning that it can direct traffic to the closest available backend, reducing latency for clients around the world.
+
+40. Problem:
+
+Your applications in Google Cloud need to connect to an on-premises database.
+The database's IP may change, and you want to avoid updating the IP in all your applications every time it changes.
+Solution:
+
+Use Cloud DNS with a private DNS zone.
+Create a custom DNS name (e.g., db.internal.example.com) that resolves to the on-premises database's IP address.
+When the IP of the database changes, you only need to update the IP in the Cloud DNS record, not in each application.
+Why it works:
+
+Private DNS allows for name resolution within the VPC network and connected hybrid cloud networks (via VPN or Interconnect).
+Applications use the DNS name to connect to the database instead of hardcoding the IP address.
+When the IP of the database changes, you just update the DNS record, and all applications will automatically use the updated IP.
+
+42. Use Case Requirements:
+Gamers connect to the game backend using their personal phones over the internet.
+The game sends UDP packets to the backend.
+The backend needs to be exposed over a single IP address.
+The backend can scale over multiple VMs.
+Why External Network Load Balancer?
+
+Supports UDP traffic: The External Network Load Balancer (ENLB) supports TCP and UDP traffic, whereas other types of load balancers (like HTTP(S) or SSL Proxy) only support HTTP(S) or TCP traffic.
+Single IP address: It allows multiple VMs to be exposed using a single, public IP address.
+Handles global traffic: It can handle traffic from users on the internet, which matches the use case for a multiplayer mobile game.
+Supports high throughput: It’s designed for low-latency, high-throughput applications, making it perfect for multiplayer gaming.
+
+43.The gsutil rsync command allows you to sync files from the on-premises storage to Cloud Storage. It only uploads new or changed files, saving time and bandwidth.
+By scheduling the script using cron (for Linux) or Task Scheduler (for Windows), the process can run at specific intervals, automating the upload process.
+
+44.You received a JSON file that contained a private key of a Service Account in order to get access to several resources in a Google Cloud project. You downloaded and installed the Cloud SDK and want to use this private key for authentication and authorization when performing gcloud commands. What should you do?
+
+B. Use the command gcloud auth activate-service-account and point it to the private key.
+
+45.What is Network Firewall Priority?
+Priority is a numeric value assigned to each firewall rule that indicates the order in which the rules are processed.
+The lower the priority number, the higher the precedence of that rule. A rule with a lower number is evaluated before a rule with a higher number.
+Firewall rules with the same priority are evaluated in the order they were created.
+
+46.When running applications on Google Cloud's Compute Engine instances, you need to ensure that instances are resilient to any maintenance activities, such as host maintenance. Google Cloud can perform maintenance on the physical host machines that your instances run on, and how the instance behaves during that maintenance depends on the configuration.
+
+Host Maintenance: This refers to the maintenance events (e.g., hardware or software updates) that Google Cloud applies to the physical machines that host your virtual machines (VMs). You can control how your instances respond to these maintenance events using the onHostMaintenance availability policy.
+
+47. M1 Machine types for Enterprise Resource Planning ERP i.e. SAP-HANA
+
+48. After an instance is created to add a svc account you need to stop the instance. Best is When creating the instances, specify a Service Account for each instance
+
+49. For a transactional, relational data storage system for a mission-critical application, you should consider Cloud SQL (for moderate scaling) or Cloud Spanner (for global scalability and high availability). BigQuery, Cloud Bigtable, and Cloud Datastore are not suitable for transactional, relational workloads.
+
