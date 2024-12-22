@@ -267,8 +267,16 @@ Host Maintenance: This refers to the maintenance events (e.g., hardware or softw
 
 49. For a transactional, relational data storage system for a mission-critical application, you should consider Cloud SQL (for moderate scaling) or Cloud Spanner (for global scalability and high availability). BigQuery, Cloud Bigtable, and Cloud Datastore are not suitable for transactional, relational workloads.
 
+<<<<<<< HEAD
+50.To expose an application in Google Kubernetes Engine (GKE) to the public using HTTPS on a public IP address, the recommended approach is to use a Kubernetes Ingress with a Kubernetes Service of type NodePort. This is the industry-standard way to configure public, HTTPS-enabled access for applications in GKE.
+=======
 50. Cloud Identity-Aware Proxy (Cloud IAP) is a Google Cloud service that provides secure, context-aware access to your applications and virtual machines (VMs) without requiring a VPN. It enables you to control access to your applications and resources based on a user's identity and the context of their request, such as location or device.
+>>>>>>> 2ef856648e7063d05ca8957254bd0e9c1a2e6f47
 
+<<<<<<< HEAD
+ClusterIP exposes the service only inside the cluster.
+It is not accessible from the internet and cannot be used to serve public traffic.
+=======
 51.You’re attempting to deploy a new instance that uses the centos 7 family. You can’t recal the
 Exact name of the family. Which command could you use to determine the family names? (2)
 
@@ -354,3 +362,5 @@ gcloud compute snapshots describe
 73. Sync Google workspace users with On-PREM AD- GCDS(Google Cloud Directory Sync)
 
 74. Largest CIDR
+
+>>>>>>> 2ef856648e7063d05ca8957254bd0e9c1a2e6f47
