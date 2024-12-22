@@ -166,6 +166,10 @@ Why it's wrong: This is unnecessary complexity. Cloud Scheduler triggers tasks a
 30. Command to create the Cloud function inside GCloud
 gcloud functions deploy
 
+gcloud app deploy app.yaml
+
+Deokiy change through deployment manager: gcloud deployment-manager deployments update
+
 31.To extract the IP address of a Kubernetes Service, you can use kubectl get svc with the -o jsonpath option. The jsonpath format allows you to specify a query path to extract specific information from the Kubernetes resource's JSON output.
 
 Command Breakdown:
@@ -263,3 +267,90 @@ Host Maintenance: This refers to the maintenance events (e.g., hardware or softw
 
 49. For a transactional, relational data storage system for a mission-critical application, you should consider Cloud SQL (for moderate scaling) or Cloud Spanner (for global scalability and high availability). BigQuery, Cloud Bigtable, and Cloud Datastore are not suitable for transactional, relational workloads.
 
+50. Cloud Identity-Aware Proxy (Cloud IAP) is a Google Cloud service that provides secure, context-aware access to your applications and virtual machines (VMs) without requiring a VPN. It enables you to control access to your applications and resources based on a user's identity and the context of their request, such as location or device.
+
+51.You’re attempting to deploy a new instance that uses the centos 7 family. You can’t recal the
+Exact name of the family. Which command could you use to determine the family names? (2)
+
+D. gcloud compute images list
+
+52.You have been asked to create robust Virtual Private Network (VPN) connectivity between a new Virtual
+Private Cloud (VPC) and a remote site. Key requirements include dynamic routing, a shared addressspace of 10.19.0.1/22, and no overprovisioning of tunnels during a failover event. You want to follow
+Google-recommended practices to set up a high availability Cloud VPN. What should you do?
+A. Use a custom mode VPC network, configure static routes, and use active/passive routing
+B. Use an automatic mode VPC network, configure static routes, and use active/active routing
+C. Use a custom mode VPC network use Cloud Router border gateway protocol (86P) routes, and
+use active/passive routing
+D. Use an automatic mode VPC network, use Cloud Router border gateway protocol (BGP) routes
+and configure policy-based routing
+
+This approach follows Google Cloud's best practices for setting up a highly available VPN with dynamic routing.
+
+Custom mode VPC network:
+
+A custom mode VPC gives you control over subnet IP ranges, which allows you to specify a shared address space like 10.19.0.1/22.
+Automatic mode VPCs automatically allocate IP address ranges for subnets, which would not allow you to specify a custom address space.
+Cloud Router with BGP (Border Gateway Protocol):
+
+Google recommends using Cloud Router with BGP for dynamic routing. BGP allows for automatic propagation of routes between your VPC and on-premises network without requiring manual route updates.
+BGP enables your VPN tunnel to dynamically adjust to changes in the network, such as IP changes or failover events, without manual intervention.
+Active/Passive routing:
+
+For high availability, active/passive routing is the recommended configuration for Cloud VPN. The active tunnel is used under normal conditions, and the passive tunnel is only activated if the active tunnel fails.
+This prevents overprovisioning of tunnels and ensures that only one tunnel is in use at a time under normal operation, conserving resources and maintaining efficiency.
+
+
+53You are a project owner and need your co-worker to deploy a new version of your application to App
+Engine. You want to follow Google's recommended practices. Which IAM roles should you grant your coworker?
+
+C. C. App Engine Deployer
+
+54.Stackdriver Logging, now known as Google Cloud Logging, is a fully managed service provided by Google Cloud that allows you to store, search, analyze, and monitor log data from various Google Cloud services and applications. It provides a central location where you can access logs from your cloud-based resources, helping you with debugging, troubleshooting, monitoring, and auditing activities.Export Logs: You can export logs to other Google Cloud services like BigQuery or Cloud Storage for further analysis, long-term storage, or integration with third-party tools.
+
+55.The best way to ensure your security team has access to the data they need for auditing network traffic is to:
+B. Enable flow logs.
+Explanation:
+Flow logs in Google Cloud capture metadata about network traffic flowing to and from network interfaces in your Virtual Private Cloud (VPC). This includes details like source and destination IP addresses, ports, and protocols, which are essential for auditing network traffic.
+Enabling flow logs allows you to record and view network flows, which is valuable for troubleshooting, analyzing traffic patterns, and auditing for security purposes. Flow logs can be stored in Cloud Storage, BigQuery, or Cloud Logging for analysis.
+
+56.Your use case involves UDP traffic, and the goal is to expose multiple VMs over a single IP address while handling this traffic. UDP is a connectionless protocol, and to handle it efficiently with Google Cloud, the External Network Load Balancer is the appropriate choice.
+
+The External Network Load Balancer is capable of handling UDP traffic and can distribute it across multiple backend VMs based on their availability and health, all while exposing a single external IP address. This is ideal for real-time applications like games where low-latency and high-throughput communication are critical.
+
+
+57.During an audit, auditors determined that there are insufficient access controls on Cloud Storage buckets. The auditors recommend you use uniform bucket-level access. After applying uniform bucket-level access some users that had access to objects in buckets no longer have access. What could be the cause?
+a)Users do not have IAM permissions that allow them access to objects in buckets. Prior to setting uniform bucket-level access, those users had access through ACLs.
+
+58.Cloud Audit Logs maintain three audit logs: Admin Activity logs, Data Access logs, and System Event logs
+
+59. Roles are set of permission
+As a consultant to a new Google Cloud customer, you are asked to help set up billing accounts. What permission must an identity have in order to create a billing account?
+billing.accounts.create is the permission needed to create a billing account.
+
+60.The source and cloned disk must be in the same zone and region and must be of the same type. The size of the clone must be at least the size of the source disk.
+
+61.You have a set of snapshots that you keep as backups of several persistent disks. You want to know the source disk for each snapshot. What command would you use to get that information?
+gcloud compute snapshots describe
+
+62.On a sole tenant node, only VMs from the same project will run on that node
+
+63.Target pools  with instances  must have a health check to function properly.
+
+64.Cloud Functions is used to respond to events in Google Cloud, including uploading of files in Cloud Storage
+
+65.Analyzing billing data, run sql queries on huge data : Biq Query
+
+67. High Bandwidth dedicated network between on-prem & GCP: Direct Inter Connect
+
+68. Product redy server, isolated environment few possible steps: Cloud Marketplace
+
+69. SQL DB support autoscaling and available globally Cloud Spanner
+
+70. Small data, cost effective, single location SQL DB - Cloud SQL
+
+71. Traffic split between multiple application version - Cloud Run/ App Engine
+
+72. Non-persistent, highest performance disk - Local SSD
+73. Sync Google workspace users with On-PREM AD- GCDS(Google Cloud Directory Sync)
+
+74. Largest CIDR
