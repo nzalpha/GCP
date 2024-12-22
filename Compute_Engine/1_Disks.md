@@ -1,6 +1,6 @@
 ---
 
-# **Disks**
+**Disks**
 Link : https://cloud.google.com/compute/docs/disks
 Each Compute Engine VM has a single boot disk that contains the operating system. If we need to store any other application related data like logs we will be using Data disk.
 
